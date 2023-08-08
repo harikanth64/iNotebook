@@ -21,4 +21,6 @@ const UserSchema = new Schema({
     }
   });
 
-  module.exports = mongoose.model('user',UserSchema);
+  const User = mongoose.model('user',UserSchema);
+  // To restrict duplicate entries
+  module.exports = User
