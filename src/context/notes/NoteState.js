@@ -3,21 +3,85 @@ import NoteContext from "./noteContext";
 
 
 const NoteState = (props)=> {
-    const s1 = {
-        "name": "Harry",
-        "class": "5b"
-    }
-    const [state, setState] = useState(s1);
-    const update = ()=> {
-        setTimeout(() => {
-            setState({
-                "name": "Larry",
-                "class": "10b"
-            })
-        }, 1000);
-    }
+    const notesIntial = [
+        {
+          "_id": "64d3845e7859620922f766f2",
+          "user": "64d377fe88058bc5b34735d1",
+          "title": "First Note",
+          "description": "I need to make a call tomorrow",
+          "tag": "personal",
+          "date": "2023-08-09T12:19:42.470Z",
+          "__v": 0
+        },
+        {
+          "_id": "64d3ab72219aefdaa57d7496",
+          "user": "64d377fe88058bc5b34735d1",
+          "title": "First Note2",
+          "description": "I need to make a call tomorrow22",
+          "tag": "personal",
+          "date": "2023-08-09T15:06:26.365Z",
+          "__v": 0
+        },
+        {
+          "_id": "64d3ab72219aefdaa57d7496",
+          "user": "64d377fe88058bc5b34735d1",
+          "title": "First Note2",
+          "description": "I need to make a call tomorrow22",
+          "tag": "personal",
+          "date": "2023-08-09T15:06:26.365Z",
+          "__v": 0
+        },
+        {
+          "_id": "64d3ab72219aefdaa57d7496",
+          "user": "64d377fe88058bc5b34735d1",
+          "title": "First Note2",
+          "description": "I need to make a call tomorrow22",
+          "tag": "personal",
+          "date": "2023-08-09T15:06:26.365Z",
+          "__v": 0
+        },
+        {
+            "_id": "64d3ab72219aefdaa57d7496",
+            "user": "64d377fe88058bc5b34735d1",
+            "title": "First Note2",
+            "description": "I need to make a call tomorrow22",
+            "tag": "personal",
+            "date": "2023-08-09T15:06:26.365Z",
+            "__v": 0
+          },
+          {
+            "_id": "64d3ab72219aefdaa57d7496",
+            "user": "64d377fe88058bc5b34735d1",
+            "title": "First Note2",
+            "description": "I need to make a call tomorrow22",
+            "tag": "personal",
+            "date": "2023-08-09T15:06:26.365Z",
+            "__v": 0
+          },
+          {
+            "_id": "64d3ab72219aefdaa57d7496",
+            "user": "64d377fe88058bc5b34735d1",
+            "title": "First Note2",
+            "description": "I need to make a call tomorrow22",
+            "tag": "personal",
+            "date": "2023-08-09T15:06:26.365Z",
+            "__v": 0
+          },
+          {
+            "_id": "64d3ab72219aefdaa57d7496",
+            "user": "64d377fe88058bc5b34735d1",
+            "title": "First Note2",
+            "description": "I need to make a call tomorrow22",
+            "tag": "personal",
+            "date": "2023-08-09T15:06:26.365Z",
+            "__v": 0
+          }
+      ]
+
+      const [notes, setNotes] = useState(notesIntial);
+
     return (
-        <NoteContext.Provider value={{state, update}}>
+        <NoteContext.Provider value={{notes, setNotes}}>
             {props.children}
         </NoteContext.Provider>
     )
