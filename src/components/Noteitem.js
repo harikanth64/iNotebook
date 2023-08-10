@@ -9,7 +9,7 @@ import noteContext from '../context/notes/noteContext';
 function Noteitem(props) {
     const context = useContext(noteContext);
     const { deleteNote } = context;
-    const { note } = props;
+    const { note, updateNote } = props;
     return (
         <div className='col-md-3'>
             <div className="card my-3" >
@@ -20,12 +20,15 @@ function Noteitem(props) {
                         </div>
                         <div className='align-self-baseline'>
                             <FontAwesomeIcon icon={faTrashCan} style={{ cursor: "pointer" }} onClick={()=> {deleteNote(note._id)}}/>
-                            <FontAwesomeIcon icon={faPenToSquare} style={{ cursor: "pointer" }} className='mx-3' />
+                            <FontAwesomeIcon icon={faPenToSquare} style={{ cursor: "pointer" }} className='mx-3' onClick={()=>{updateNote(note)}}/>
                         </div>
                     </div>
                     <div>
                         <p className="card-text">{note.description}</p>
                     </div>
+                    {/* <div className='my-3'> */}
+                    <span className="badge text-bg-light my-3 bg-body-secondary">{note.tag}</span>
+                    {/* </div> */}
                 </div>
             </div>
         </div>
