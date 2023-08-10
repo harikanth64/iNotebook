@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import Noteitem from './Noteitem';
 import AddNote from './AddNote';
 
+
 function Notes() {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
@@ -51,11 +52,11 @@ function Notes() {
               <form className='my-3'>
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">Title</label>
-                  <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} aria-describedby="emailHelp" onChange={onChange} />
+                  <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} aria-describedby="emailHelp" onChange={onChange} minLength={5} required/>
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="description" className="form-label">Description</label>
-                  <textarea className="form-control" name="edescription" value={note.edescription} id="edescription" onChange={onChange} rows="4"></textarea>
+                  <label htmlFor="description" className="form-label">Notes</label>
+                  <textarea className="form-control" name="edescription" value={note.edescription} id="edescription" onChange={onChange} rows="4" minLength={5} required></textarea>
                   {/* <input type="text" className="form-control" name="edescription" value={note.edescription} id="edescription" onChange={onChange} /> */}
                 </div>
                 <div className="mb-3">
@@ -66,13 +67,16 @@ function Notes() {
             </div>
             <div className="modal-footer">
               <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" onClick={handleClick} className="btn btn-primary">Update Note</button>
+              <button type="button" disabled={note.etitle.length<5 || note.edescription.length<5} onClick={handleClick} className="btn btn-primary">Update Note</button>
             </div>
           </div>
         </div>
       </div>
       <div className="row my-3">
-        <h2>Your Notes</h2>
+        <h3>Your Notes</h3>
+        <div className='container'>
+        {notes.length===0 && 'No notes added'}
+        </div>
         {notes.map((note) => {
           return <Noteitem key={note._id} updateNote={updateNote} note={note} />
         })}
